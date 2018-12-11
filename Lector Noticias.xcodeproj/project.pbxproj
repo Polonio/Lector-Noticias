@@ -15,6 +15,7 @@
 		5AC3188721BFACE100DFEBF5 /* Lector_NoticiasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3188621BFACE100DFEBF5 /* Lector_NoticiasTests.swift */; };
 		5AC3189221BFACE100DFEBF5 /* Lector_NoticiasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3189121BFACE100DFEBF5 /* Lector_NoticiasUITests.swift */; };
 		5AC318A021BFB62A00DFEBF5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3189F21BFB62A00DFEBF5 /* Tools.swift */; };
+		5AC318A221BFE89B00DFEBF5 /* Modelo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC318A121BFE89B00DFEBF5 /* Modelo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5AC3189121BFACE100DFEBF5 /* Lector_NoticiasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lector_NoticiasUITests.swift; sourceTree = "<group>"; };
 		5AC3189321BFACE100DFEBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AC3189F21BFB62A00DFEBF5 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		5AC318A121BFE89B00DFEBF5 /* Modelo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modelo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				5AC3187121BFACDB00DFEBF5 /* AppDelegate.swift */,
 				5AC3187321BFACDB00DFEBF5 /* ViewController.swift */,
 				5AC3189F21BFB62A00DFEBF5 /* Tools.swift */,
+				5AC318A121BFE89B00DFEBF5 /* Modelo.swift */,
 				5AC3187521BFACDB00DFEBF5 /* Main.storyboard */,
 				5AC3187821BFACE100DFEBF5 /* Assets.xcassets */,
 				5AC3187A21BFACE100DFEBF5 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 				5AC318A021BFB62A00DFEBF5 /* Tools.swift in Sources */,
 				5AC3187421BFACDB00DFEBF5 /* ViewController.swift in Sources */,
 				5AC3187221BFACDB00DFEBF5 /* AppDelegate.swift in Sources */,
+				5AC318A221BFE89B00DFEBF5 /* Modelo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
