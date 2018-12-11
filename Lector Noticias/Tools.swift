@@ -7,20 +7,19 @@
 //
 
 import Foundation
-import CommonCrypto
 
 var inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2")!
 
 func conectarRSS() {
    let queryPost = URLQueryItem (name: "p", value: "posts")
-   let queryCategorias = URLQueryItem (name: "categoria", value: "categories")
+   let queryCategorias = URLQueryItem (name: "cat", value: "categories")
    let queryAutores = URLQueryItem (name: "author", value: "users")
 
    var url = URLComponents()
    url.scheme = inicioURL.scheme
    url.host = inicioURL.host
    url.path = inicioURL.path
-   url.queryItems = [queryPost, queryCategorias, queryAutores]
+   url.queryItems = [queryPost]
    
    let session = URLSession.shared
    var request = URLRequest(url: url.url!.appendingPathComponent("posts"))
