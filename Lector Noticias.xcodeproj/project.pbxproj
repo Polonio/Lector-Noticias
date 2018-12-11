@@ -14,6 +14,7 @@
 		5AC3187C21BFACE100DFEBF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC3187A21BFACE100DFEBF5 /* LaunchScreen.storyboard */; };
 		5AC3188721BFACE100DFEBF5 /* Lector_NoticiasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3188621BFACE100DFEBF5 /* Lector_NoticiasTests.swift */; };
 		5AC3189221BFACE100DFEBF5 /* Lector_NoticiasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3189121BFACE100DFEBF5 /* Lector_NoticiasUITests.swift */; };
+		5AC318A021BFB62A00DFEBF5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3189F21BFB62A00DFEBF5 /* Tools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		5AC3188D21BFACE100DFEBF5 /* Lector NoticiasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lector NoticiasUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AC3189121BFACE100DFEBF5 /* Lector_NoticiasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lector_NoticiasUITests.swift; sourceTree = "<group>"; };
 		5AC3189321BFACE100DFEBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AC3189F21BFB62A00DFEBF5 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				5AC3187121BFACDB00DFEBF5 /* AppDelegate.swift */,
 				5AC3187321BFACDB00DFEBF5 /* ViewController.swift */,
+				5AC3189F21BFB62A00DFEBF5 /* Tools.swift */,
 				5AC3187521BFACDB00DFEBF5 /* Main.storyboard */,
 				5AC3187821BFACE100DFEBF5 /* Assets.xcassets */,
 				5AC3187A21BFACE100DFEBF5 /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AC318A021BFB62A00DFEBF5 /* Tools.swift in Sources */,
 				5AC3187421BFACDB00DFEBF5 /* ViewController.swift in Sources */,
 				5AC3187221BFACDB00DFEBF5 /* AppDelegate.swift in Sources */,
 			);
