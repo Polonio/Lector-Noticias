@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-struct RootJSON: Codable {
+struct RootPostsJSON: Codable {
    let id: Int32
    let date: String
    let jetpack_feactured_media_url: URL?
@@ -19,22 +19,22 @@ struct RootJSON: Codable {
    struct Content: Codable {
       let rendered: String
    }
-   struct Authors: Codable {
-      let id: Int16
-      let name: String
-      struct Avatar_urls: Codable {
-         let avatar_urls: URL?
-      }
-   }
-   struct Categories: Codable {
-      let id: Int16
-      let name: String
-      // let link: String - ¿Lo necesito?
-   }
-   
 }
-var cargaDatos: [RootJSON] = []
-var autores: [Authors] = []
+struct RootAuthorsJSON: Codable {
+    let id: Int16
+    let name: String
+    struct Avatar_urls: Codable {
+        let avatar_urls: URL?
+    }
+}
+struct RootCategoriesJSON: Codable {
+    let id: Int16
+    let name: String
+    // let link: String - ¿Lo necesito?
+}
+var cargaPosts: [RootPostsJSON] = []
+var cargarAutores: [RootAuthorsJSON] = []
+var cargarCategorias: [RootCategoriesJSON] = []
 
 //var persistentContainer:NSPersistentContainer = {
 //   let container = NSPersistentContainer(name: "Comics")
