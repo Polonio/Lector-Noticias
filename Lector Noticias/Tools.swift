@@ -8,13 +8,16 @@
 
 import Foundation
 
-var inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2")!
+let inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2/posts")!
+//let inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2")
 
-func conectarRSS() {
+func conectarRSS(valorDato: String) {
    let queryPost = URLQueryItem (name: "p", value: "posts")
    let queryCategorias = URLQueryItem (name: "cat", value: "categories")
    let queryAutores = URLQueryItem (name: "author", value: "users")
 
+   // Switch case: ??????
+   
    var url = URLComponents()
    url.scheme = inicioURL.scheme
    url.host = inicioURL.host
