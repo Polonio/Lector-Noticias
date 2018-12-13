@@ -11,30 +11,54 @@ import CoreData
 
 struct RootPostsJSON: Codable {
    let id: Int32
-   let date: String
-   let jetpack_feactured_media_url: URL?
-   struct Title: Codable {
+   let date: String // tipo Date. Lo dejo string para que no pete.
+   let link: URL
+   struct Rendered: Codable {
       let rendered: String
    }
+   let titulo: Rendered
+   
    struct Content: Codable {
       let rendered: String
    }
+   let contenido: Rendered
 }
+
 struct RootAuthorsJSON: Codable {
     let id: Int16
     let name: String
     struct Avatar_urls: Codable {
         let avatar_urls: URL?
     }
+   let avatar: Avatar_urls
 }
+
 struct RootCategoriesJSON: Codable {
     let id: Int16
     let name: String
     // let link: String - ¿Lo necesito?
 }
-var cargaPosts: [RootPostsJSON] = []
-var cargarAutores: [RootAuthorsJSON] = []
-var cargarCategorias: [RootCategoriesJSON] = []
+
+private enum CodingKeys: String, CodingKey {
+   case id = "id"
+   case date = "date"
+   case link = "link"
+   case rendered = "rendered"
+   case avatar_urls = "avatar_urls"
+   case name = "name"
+}
+
+func cargar(datos:Data) {
+   //let postJSON = try JSONDecoder().decode([RootPostsJSON].self, from: datos)
+//   let dateFormatter = DateFormatter()
+//   dateFormatter.dateFormat = "dd-MM-yyyy hh:ss"
+}
+//var cargaPosts: [RootPostsJSON] = []
+//var cargarAutores: [RootAuthorsJSON] = []
+//var cargarCategorias: [RootCategoriesJSON] = []
+//var datosCarga: RootPostsJSON?
+
+
 
 //var persistentContainer:NSPersistentContainer = {
 //   let container = NSPersistentContainer(name: "Comics")

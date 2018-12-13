@@ -8,8 +8,8 @@
 
 import Foundation
 
-let inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2/posts")!
-//let inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2")
+let inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2")!
+
 
 func conectarRSS(valorDato: String) {
    let queryPost = URLQueryItem (name: "p", value: "posts")
@@ -41,7 +41,7 @@ func conectarRSS(valorDato: String) {
       } else {
          print(response.statusCode)
       }
-      }.resume()
+   }.resume()
 }
 
 // OBTENER FECHA DE PUBLICACIÓN
