@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AB21A8221C3B2EE009CE57D /* DDBB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8021C3B2EE009CE57D /* DDBB.xcdatamodeld */; };
+		5AB21A8421C3CF8A009CE57D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */; };
+		5AB21A8621C3D05D009CE57D /* TableViewControllerRSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */; };
 		5AC3187221BFACDB00DFEBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3187121BFACDB00DFEBF5 /* AppDelegate.swift */; };
 		5AC3187421BFACDB00DFEBF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3187321BFACDB00DFEBF5 /* ViewController.swift */; };
 		5AC3187721BFACDB00DFEBF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC3187521BFACDB00DFEBF5 /* Main.storyboard */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5AB21A8121C3B2EE009CE57D /* DDBB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DDBB.xcdatamodel; sourceTree = "<group>"; };
+		5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerRSS.swift; sourceTree = "<group>"; };
 		5AC3186E21BFACDB00DFEBF5 /* Lector Noticias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lector Noticias.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AC3187121BFACDB00DFEBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AC3187321BFACDB00DFEBF5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +111,10 @@
 				5AC3187321BFACDB00DFEBF5 /* ViewController.swift */,
 				5AC3189F21BFB62A00DFEBF5 /* Tools.swift */,
 				5AC318A121BFE89B00DFEBF5 /* Modelo.swift */,
+				5AB21A8021C3B2EE009CE57D /* DDBB.xcdatamodeld */,
 				5AC3187521BFACDB00DFEBF5 /* Main.storyboard */,
+				5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */,
+				5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */,
 				5AC3187821BFACE100DFEBF5 /* Assets.xcassets */,
 				5AC3187A21BFACE100DFEBF5 /* LaunchScreen.storyboard */,
 				5AC3187D21BFACE100DFEBF5 /* Info.plist */,
@@ -263,7 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AC318A021BFB62A00DFEBF5 /* Tools.swift in Sources */,
+				5AB21A8221C3B2EE009CE57D /* DDBB.xcdatamodeld in Sources */,
 				5AC3187421BFACDB00DFEBF5 /* ViewController.swift in Sources */,
+				5AB21A8621C3D05D009CE57D /* TableViewControllerRSS.swift in Sources */,
+				5AB21A8421C3CF8A009CE57D /* TableViewCell.swift in Sources */,
 				5AC3187221BFACDB00DFEBF5 /* AppDelegate.swift in Sources */,
 				5AC318A221BFE89B00DFEBF5 /* Modelo.swift in Sources */,
 			);
@@ -594,6 +606,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5AB21A8021C3B2EE009CE57D /* DDBB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5AB21A8121C3B2EE009CE57D /* DDBB.xcdatamodel */,
+			);
+			currentVersion = 5AB21A8121C3B2EE009CE57D /* DDBB.xcdatamodel */;
+			path = DDBB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5AC3186621BFACDB00DFEBF5 /* Project object */;
 }

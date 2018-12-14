@@ -9,13 +9,28 @@
 import Foundation
 import CoreData
 
+var context:NSManagedObjectContext {
+   return persistentContainer.viewContext
+}
+
+func saveContext() {
+   if context.hasChanges {
+      do {
+         try context.save()
+      } catch {
+         print("Error en la grabación de la base de datos \(error)")
+      }
+   }
+}
+
 struct RootPostsJSON: Codable {
-   let id: Int32
-   let date: String // tipo Date. Lo dejo string para que no pete.
-   let link: URL
+   let id: Int16
+   let date: String? // tipo Date. Lo dejo string para que no pete.
+   let link: URL?
    struct Rendered: Codable {
       let rendered: String
    }
+   
    let titulo: Rendered
    
    struct Content: Codable {
@@ -23,6 +38,7 @@ struct RootPostsJSON: Codable {
    }
    let contenido: Rendered
 }
+var posts: [RootPostsJSON] = []
 
 struct RootAuthorsJSON: Codable {
     let id: Int16
@@ -32,134 +48,35 @@ struct RootAuthorsJSON: Codable {
     }
    let avatar: Avatar_urls
 }
+var author: [RootPostsJSON] = []
 
 struct RootCategoriesJSON: Codable {
     let id: Int16
     let name: String
     // let link: String - ¿Lo necesito?
 }
+var categories: [RootCategoriesJSON] = []
 
-private enum CodingKeys: String, CodingKey {
-   case id = "id"
-   case date = "date"
-   case link = "link"
-   case rendered = "rendered"
-   case avatar_urls = "avatar_urls"
-   case name = "name"
+struct rssCarga {
+   let id: Int16
+   let titulo: String
+   let contenido: String
+   let date: String
 }
 
 func cargar(datos:Data) {
-   //let postJSON = try JSONDecoder().decode([RootPostsJSON].self, from: datos)
-//   let dateFormatter = DateFormatter()
-//   dateFormatter.dateFormat = "dd-MM-yyyy hh:ss"
-}
-//var cargaPosts: [RootPostsJSON] = []
-//var cargarAutores: [RootAuthorsJSON] = []
-//var cargarCategorias: [RootCategoriesJSON] = []
-//var datosCarga: RootPostsJSON?
-
-
-
-//var persistentContainer:NSPersistentContainer = {
-//   let container = NSPersistentContainer(name: "Comics")
-//   container.loadPersistentStores { (storeDescripcion, error) in
-//      if let error = error as NSError? {
-//         fatalError("Error inicialización la base de datos")
-//      }
-//   }
-//   return container
-//}()
-//
-//var context:NSManagedObjectContext {
-//   return persistentContainer.viewContext
-//}
-//
-//func saveContext() {
-//   if context.hasChanges {
-//      do {
-//         try context.save()
-//      } catch {
-//         print("Error en la grabación de la base de datos \(error)")
-//      }
-//   }
-//}
-//
-//struct RootJSON:Codable {
-//   let etag:String
-//   struct Data:Codable {
-//      let count:Int
-//      struct Results:Codable {
-//         let id:Int
-//         let title:String
-//         let issueNumber:Int
-//         let variantDescription:String
-//         let description:String?
-//         struct Prices:Codable {
-//            let type:String
-//            let price:Double
+   let decoder = JSONDecoder()
+   do {
+      let carga = try decoder.decode(RootPostsJSON.self, from: datos)
+      
+      for datos in posts {
+         let cargaTemp = rssCarga (id: Int16(datos.id), titulo: datos.titulo.rendered, contenido: datos.contenido.rendered, date: datos.date ?? "No se recogen datos")
+//         var postsDDBB:[Posts] = []
+//         for post in dato.titulo.rendered {
+//            if let existeTitulo =
 //         }
-//         let prices:[Prices]
-//         struct Thumbnail:Codable {
-//            let path:URL
-//            let imageExtension:String
-//            enum CodingKeys:String, CodingKey {
-//               case path
-//               case imageExtension = "extension"
-//            }
-//            var fullPath:URL? {
-//               var pathComponents = URLComponents(url: path, resolvingAgainstBaseURL: false)
-//               pathComponents?.scheme = "https"
-//               return pathComponents?.url?.appendingPathComponent("portrait_incredible").appendingPathExtension(imageExtension)
-//            }
-//         }
-//         let thumbnail:Thumbnail
-//         struct Creators:Codable {
-//            let items:[Items]
-//            struct Items:Codable {
-//               let name:String
-//               let role:String?
-//            }
-//         }
-//         let creators:Creators
-//         let characters:Creators
-//      }
-//      let results:[Results]
-//   }
-//   let data:Data
-//}
-//
-//var datosCarga:RootJSON?
-//var etag:String?
-//
-//struct comicsCarga {
-//   let id:Int32
-//   let desc:String
-//   let title:String
-//   let imagenURL:URL?
-//   let price:Double
-//   let issueNumber:Int16
-//}
-//
-//func cargar(datos:Data) {
-//   let decoder = JSONDecoder()
-//   do {
-//      let carga = try decoder.decode(RootJSON.self, from: datos)
-//      UserDefaults.standard.set(carga.etag, forKey: "etag")
-//      etag = carga.etag
-//
-//      for dato in carga.data.results {
-//         let cargaTemp = comicsCarga(id: Int32(dato.id), desc: dato.description ?? "No hay descripción", title: dato.title, imagenURL: dato.thumbnail.fullPath, price: dato.prices.first?.price ?? 0, issueNumber: Int16(dato.issueNumber))
-//         var personajes:[Personajes] = []
-//         for heroe in dato.characters.items {
-//            if let existeHeroe = checkPersonaje(name: heroe.name) {
-//               personajes.append(existeHeroe)
-//            } else {
-//               let newPersonaje = Personajes(context: context)
-//               newPersonaje.nombre = heroe.name
-//               personajes.append(newPersonaje)
-//            }
-//         }
-//         var autores:[Autores] = []
+         
+//         var autores:[Authors] = []
 //         for autor in dato.creators.items {
 //            if let existeAutor = checkCreador(name: autor.name, role: autor.role ?? "None") {
 //               autores.append(existeAutor)
@@ -169,42 +86,67 @@ func cargar(datos:Data) {
 //               newAutor.role = autor.role ?? "Ninguno"
 //               autores.append(newAutor)
 //            }
-//         }
-//         let consulta:NSFetchRequest<Comics> = Comics.fetchRequest()
-//         consulta.predicate = NSPredicate(format: "id = %d", dato.id)
-//         do {
-//            let comic = try context.fetch(consulta)
-//            if let comicFetched = comic.first {
-//               comicFetched.desc = cargaTemp.desc
-//               comicFetched.issueNumber = cargaTemp.issueNumber
-//               comicFetched.imagenURL = cargaTemp.imagenURL
-//               comicFetched.price = cargaTemp.price
-//               comicFetched.title = cargaTemp.title
-//               comicFetched.personajes = NSOrderedSet(array: personajes)
-//               comicFetched.autores = NSOrderedSet(array: autores)
-//            } else {
-//               let newComic = Comics(context: context)
-//               newComic.id = cargaTemp.id
-//               newComic.desc = cargaTemp.desc
-//               newComic.issueNumber = cargaTemp.issueNumber
-//               newComic.imagenURL = cargaTemp.imagenURL
-//               newComic.price = cargaTemp.price
-//               newComic.title = cargaTemp.title
+         
+         let consulta: NSFetchRequest<Posts> = Posts.fetchRequest()
+         consulta.predicate = NSPredicate (format: "id = %d", cargaTemp.id)
+         do {
+            let filaRSS = try context.fetch(consulta)
+            if let rssFetched = filaRSS.first {
+               rssFetched.id = cargaTemp.id
+               rssFetched.titulo = cargaTemp.titulo
+               rssFetched.contenido = cargaTemp.contenido
+               rssFetched.date = cargaTemp.date
+            } else {
+               let newRSS = Posts(context: context)
+               newRSS.id = cargaTemp.id
+               newRSS.titulo = cargaTemp.titulo
+               newRSS.contenido = cargaTemp.contenido
+               newRSS.date = cargaTemp.date
 //               newComic.addToPersonajes(NSOrderedSet(array: personajes))
 //               newComic.addToAutores(NSOrderedSet(array: autores))
-//            }
-//         } catch {
-//            print("Error en la consulta del comic en el id \(dato.id) - \(error)")
-//         }
-//      }
-//      saveContext()
-//      print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
-//
-//      NotificationCenter.default.post(name: NSNotification.Name("OKCARGA"), object: nil)
-//   } catch {
-//      print("Fallo en la serialización \(error)")
-//   }
-//}
+            }
+         } catch {
+            print("Error en la consulta del comic en el id \(datos.id) - \(error)")
+         }
+      }
+      saveContext()
+      print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
+      
+      NotificationCenter.default.post(name: NSNotification.Name("OKCARGA"), object: nil)
+   } catch {
+      print("Fallo en la serialización \(error)")
+   }
+}
+
+
+var persistentContainer:NSPersistentContainer = {
+   let container = NSPersistentContainer(name: "Comics")
+   container.loadPersistentStores { (storeDescripcion, error) in
+      if let error = error as NSError? {
+         fatalError("Error inicialización la base de datos")
+      }
+   }
+   return container
+}()
+
+func recuperaURL(url:URL, callback:@escaping (Data) -> Void) {
+   let conexion = URLSession.shared
+   conexion.dataTask(with: url) { (data, response, error) in
+      guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
+         if let error = error {
+            print("Error en la conexión de red \(error.localizedDescription)")
+         }
+         return
+      }
+         if response.statusCode == 200 {
+               callback(data)
+         } else {
+            print ("error de llamada \(response.statusCode)")
+         }
+      }.resume()
+}
+
+
 //
 //func checkPersonaje(name:String) -> Personajes? {
 //   let consulta:NSFetchRequest<Personajes> = Personajes.fetchRequest()
@@ -238,22 +180,6 @@ func cargar(datos:Data) {
 //   return nil
 //}
 //
-//func recuperaURL(url:URL, callback:@escaping (UIImage) -> Void) {
-//   let conexion = URLSession.shared
-//   conexion.dataTask(with: url) { (data, response, error) in
-//      guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
-//         if let error = error {
-//            print("Error en la conexión de red \(error.localizedDescription)")
-//         }
-//         return
-//      }
-//      if response.statusCode == 200 {
-//         if let imagen = UIImage(data: data) {
-//            callback(imagen)
-//         }
-//      }
-//      }.resume()
-//}
 
 // para poner, lo tiene puesto Julio.
 // var datos: [Posts] = []
