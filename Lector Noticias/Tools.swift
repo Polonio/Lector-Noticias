@@ -13,8 +13,8 @@ let inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2")!
 
 func conectarRSS(valorDato: String) {
    let queryPost = URLQueryItem (name: "p", value: "posts")
-   let queryCategorias = URLQueryItem (name: "cat", value: "categories")
-   let queryAutores = URLQueryItem (name: "author", value: "users")
+//   let queryCategorias = URLQueryItem (name: "cat", value: "categories")
+//   let queryAutores = URLQueryItem (name: "author", value: "users")
 
    // Switch case: ??????
    
@@ -25,7 +25,7 @@ func conectarRSS(valorDato: String) {
    url.queryItems = [queryPost]
    
    let session = URLSession.shared
-   var request = URLRequest(url: url.url!.appendingPathComponent("posts"))
+   var request = URLRequest(url: url.url!.appendingPathComponent(valorDato))
    request.httpMethod = "GET"
    request.addValue("*/*", forHTTPHeaderField: "Accept")
    session.dataTask(with: request) { (data, response, error) in
@@ -37,7 +37,7 @@ func conectarRSS(valorDato: String) {
       }
       if response.statusCode == 200 {
          print(String(data: data, encoding: .utf8)!)
-         //cargar(datos: data)
+         cargar(datos: data)
       } else {
          print(response.statusCode)
       }

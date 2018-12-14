@@ -31,12 +31,12 @@ struct RootPostsJSON: Codable {
       let rendered: String
    }
    
-   let titulo: Rendered
+   let title: Rendered
    
    struct Content: Codable {
       let rendered: String
    }
-   let contenido: Rendered
+   let content: Rendered
 }
 var posts: [RootPostsJSON] = []
 
@@ -59,7 +59,7 @@ var categories: [RootCategoriesJSON] = []
 
 struct rssCarga {
    let id: Int16
-   let titulo: String
+   let titulo: String?
    let contenido: String
    let date: String
 }
@@ -67,10 +67,10 @@ struct rssCarga {
 func cargar(datos:Data) {
    let decoder = JSONDecoder()
    do {
-      let carga = try decoder.decode(RootPostsJSON.self, from: datos)
+      let posts = try decoder.decode([RootPostsJSON].self, from: datos)
       
       for datos in posts {
-         let cargaTemp = rssCarga (id: Int16(datos.id), titulo: datos.titulo.rendered, contenido: datos.contenido.rendered, date: datos.date ?? "No se recogen datos")
+         let cargaTemp = rssCarga (id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos")
 //         var postsDDBB:[Posts] = []
 //         for post in dato.titulo.rendered {
 //            if let existeTitulo =
@@ -106,10 +106,11 @@ func cargar(datos:Data) {
 //               newComic.addToAutores(NSOrderedSet(array: autores))
             }
          } catch {
-            print("Error en la consulta del comic en el id \(datos.id) - \(error)")
+            print("Error en la consulta del RSS en el id \(datos.id) - \(error)")
          }
       }
       saveContext()
+      
       print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
       
       NotificationCenter.default.post(name: NSNotification.Name("OKCARGA"), object: nil)
@@ -120,7 +121,7 @@ func cargar(datos:Data) {
 
 
 var persistentContainer:NSPersistentContainer = {
-   let container = NSPersistentContainer(name: "Comics")
+   let container = NSPersistentContainer(name: "Posts")
    container.loadPersistentStores { (storeDescripcion, error) in
       if let error = error as NSError? {
          fatalError("Error inicialización la base de datos")
