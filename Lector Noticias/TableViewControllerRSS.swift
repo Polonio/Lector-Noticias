@@ -13,6 +13,8 @@ class TableViewControllerRSS: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       conectarRSS(valorDato: "posts")
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

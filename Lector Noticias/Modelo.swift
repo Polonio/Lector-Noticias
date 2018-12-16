@@ -48,7 +48,7 @@ struct RootAuthorsJSON: Codable {
     }
    let avatar: Avatar_urls
 }
-var author: [RootPostsJSON] = []
+var author: [RootAuthorsJSON] = []
 
 struct RootCategoriesJSON: Codable {
     let id: Int16
@@ -86,7 +86,7 @@ func cargar(datos:Data) {
 //               newAutor.role = autor.role ?? "Ninguno"
 //               autores.append(newAutor)
 //            }
-         
+        
          let consulta: NSFetchRequest<Posts> = Posts.fetchRequest()
          consulta.predicate = NSPredicate (format: "id = %d", cargaTemp.id)
          do {
@@ -119,9 +119,8 @@ func cargar(datos:Data) {
    }
 }
 
-
 var persistentContainer:NSPersistentContainer = {
-   let container = NSPersistentContainer(name: "Posts")
+   let container = NSPersistentContainer(name: "DDBB")
    container.loadPersistentStores { (storeDescripcion, error) in
       if let error = error as NSError? {
          fatalError("Error inicialización la base de datos")
@@ -146,45 +145,6 @@ func recuperaURL(url:URL, callback:@escaping (Data) -> Void) {
          }
       }.resume()
 }
-
-
-//
-//func checkPersonaje(name:String) -> Personajes? {
-//   let consulta:NSFetchRequest<Personajes> = Personajes.fetchRequest()
-//   consulta.predicate = NSPredicate(format: "nombre ==[c] %@", name)
-//   do {
-//      let character = try context.fetch(consulta)
-//      if let valor = character.first {
-//         return valor
-//      } else {
-//         return nil
-//      }
-//   } catch {
-//      print("Fallo en la consulta de personajes \(error)")
-//   }
-//   return nil
-//}
-//
-//func checkCreador(name:String, role:String) -> Autores? {
-//   let consulta:NSFetchRequest<Autores> = Autores.fetchRequest()
-//   consulta.predicate = NSPredicate(format: "autor ==[c] %@ AND role ==[c] %@", name, role)
-//   do {
-//      let creador = try context.fetch(consulta)
-//      if let valor = creador.first {
-//         return valor
-//      } else {
-//         return nil
-//      }
-//   } catch {
-//      print("Fallo en la consulta de autores \(error)")
-//   }
-//   return nil
-//}
-//
-
-// para poner, lo tiene puesto Julio.
-// var datos: [Posts] = []
-// var autores: [Authors] = []
 
 // let url = URL(String: "https://applecoding.com/wp-json/wp/v2/posts")!
 //recupera(url: url) { data in
