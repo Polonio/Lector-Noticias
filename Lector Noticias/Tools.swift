@@ -36,7 +36,7 @@ func conectarRSS(valorDato: String) {
          return
       }
       if response.statusCode == 200 {
-         print(String(data: data, encoding: .utf8)!)
+//         print(String(data: data, encoding: .utf8)!)
          cargar(datos: data)
       } else {
          print(response.statusCode)

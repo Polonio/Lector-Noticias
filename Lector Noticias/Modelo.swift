@@ -25,12 +25,12 @@ func saveContext() {
 
 struct RootPostsJSON: Codable {
    let id: Int16
-   let date: String? // tipo Date. Lo dejo string para que no pete.
+   let date: String?
    let link: URL?
    struct Rendered: Codable {
       let rendered: String
    }
-   
+   let jetpack_featured_media_url: URL?
    let title: Rendered
    
    struct Content: Codable {
@@ -53,7 +53,6 @@ var author: [RootAuthorsJSON] = []
 struct RootCategoriesJSON: Codable {
     let id: Int16
     let name: String
-    // let link: String - ¿Lo necesito?
 }
 var categories: [RootCategoriesJSON] = []
 
@@ -62,6 +61,7 @@ struct rssCarga {
    let titulo: String?
    let contenido: String
    let date: String
+   let imagenURL: URL?
 }
 
 func cargar(datos:Data) {
@@ -70,7 +70,8 @@ func cargar(datos:Data) {
       let posts = try decoder.decode([RootPostsJSON].self, from: datos)
       
       for datos in posts {
-         let cargaTemp = rssCarga (id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos")
+         let cargaTemp = rssCarga(id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos", imagenURL: datos.jetpack_featured_media_url)
+//         let cargaTemp = rssCarga (id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos")
 //         var postsDDBB:[Posts] = []
 //         for post in dato.titulo.rendered {
 //            if let existeTitulo =
@@ -96,12 +97,14 @@ func cargar(datos:Data) {
                rssFetched.titulo = cargaTemp.titulo
                rssFetched.contenido = cargaTemp.contenido
                rssFetched.date = cargaTemp.date
+               rssFetched.imagenURL = cargaTemp.imagenURL
             } else {
                let newRSS = Posts(context: context)
                newRSS.id = cargaTemp.id
                newRSS.titulo = cargaTemp.titulo
                newRSS.contenido = cargaTemp.contenido
                newRSS.date = cargaTemp.date
+               newRSS.imagenURL = cargaTemp.imagenURL
 //               newComic.addToPersonajes(NSOrderedSet(array: personajes))
 //               newComic.addToAutores(NSOrderedSet(array: autores))
             }
@@ -113,7 +116,7 @@ func cargar(datos:Data) {
       
       print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
       
-      NotificationCenter.default.post(name: NSNotification.Name("OKCARGA"), object: nil)
+      NotificationCenter.default.post(name: NSNotification.Name("CARGA_OK"), object: nil)
    } catch {
       print("Fallo en la serialización \(error)")
    }
