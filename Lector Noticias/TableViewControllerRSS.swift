@@ -78,6 +78,7 @@ class TableViewControllerRSS: UITableViewController {
          cell.autorRSS.text = datosRSS.autores?.name
          cell.textoRSS.text = datosRSS.contenido
          cell.fechaRSS.text = datosRSS.date
+      
 //      if let imgURL = datosRSS.imagenURL {
 //         recuperaURL(url: imgURL) {
 //            imagen in
