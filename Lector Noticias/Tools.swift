@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 let inicioURL = URL(string: "https://applecoding.com/wp-json/wp/v2")!
-
 
 func conectarRSS(valorDato: String) {
    let queryPost = URLQueryItem (name: "p", value: "posts")
@@ -43,11 +43,3 @@ func conectarRSS(valorDato: String) {
       }
    }.resume()
 }
-
-// OBTENER FECHA DE PUBLICACIÓN
-//func getDateTime() -> String {
-//   let fecha = Date()
-//   let formatter = DateFormatter()
-//   formatter.dateFormat = "ddMMyyyyhhmmss"
-//   return formatter.string(from: fecha)
-//}

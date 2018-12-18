@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 var context:NSManagedObjectContext {
    return persistentContainer.viewContext
@@ -30,9 +31,9 @@ struct RootPostsJSON: Codable {
    struct Rendered: Codable {
       let rendered: String
    }
+   let author: Int16
    let jetpack_featured_media_url: URL?
    let title: Rendered
-   
    struct Content: Codable {
       let rendered: String
    }
@@ -62,6 +63,7 @@ struct rssCarga {
    let contenido: String
    let date: String
    let imagenURL: URL?
+   let autor: Int16
 }
 
 func cargar(datos:Data) {
@@ -70,7 +72,7 @@ func cargar(datos:Data) {
       let posts = try decoder.decode([RootPostsJSON].self, from: datos)
       
       for datos in posts {
-         let cargaTemp = rssCarga(id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos", imagenURL: datos.jetpack_featured_media_url)
+         let cargaTemp = rssCarga(id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos", imagenURL: datos.jetpack_featured_media_url, autor: datos.author)
 //         let cargaTemp = rssCarga (id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos")
 //         var postsDDBB:[Posts] = []
 //         for post in dato.titulo.rendered {
@@ -98,6 +100,7 @@ func cargar(datos:Data) {
                rssFetched.contenido = cargaTemp.contenido
                rssFetched.date = cargaTemp.date
                rssFetched.imagenURL = cargaTemp.imagenURL
+               rssFetched.autor = cargaTemp.autor
             } else {
                let newRSS = Posts(context: context)
                newRSS.id = cargaTemp.id
@@ -105,6 +108,7 @@ func cargar(datos:Data) {
                newRSS.contenido = cargaTemp.contenido
                newRSS.date = cargaTemp.date
                newRSS.imagenURL = cargaTemp.imagenURL
+               newRSS.autor = cargaTemp.autor
 //               newComic.addToPersonajes(NSOrderedSet(array: personajes))
 //               newComic.addToAutores(NSOrderedSet(array: autores))
             }
@@ -149,9 +153,19 @@ func recuperaURL(url:URL, callback:@escaping (Data) -> Void) {
       }.resume()
 }
 
-// let url = URL(String: "https://applecoding.com/wp-json/wp/v2/posts")!
-//recupera(url: url) { data in
-//    let decoder = JSONDecoder()
-//    decoder.dateDecodingStrategy = . formatted(DateFormatter.iso8601Full)
-// do {
-// datos = try decoder.
+func recuperaImagenURL(url:URL, callback:@escaping (UIImage) -> Void) {
+   let conexion = URLSession.shared
+   conexion.dataTask(with: url) { (data, response, error) in
+      guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
+         if let error = error {
+            print("Error en la conexión de red \(error.localizedDescription)")
+         }
+         return
+      }
+      if response.statusCode == 200 {
+         if let imagen = UIImage(data: data) {
+         callback(imagen)
+         }
+      }
+      }.resume()
+}

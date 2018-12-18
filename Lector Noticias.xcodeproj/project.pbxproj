@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A9D91A521C910A500443946 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9D91A421C910A500443946 /* Extensions.swift */; };
 		5AB21A8221C3B2EE009CE57D /* DDBB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8021C3B2EE009CE57D /* DDBB.xcdatamodeld */; };
 		5AB21A8421C3CF8A009CE57D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */; };
 		5AB21A8621C3D05D009CE57D /* TableViewControllerRSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A9D91A421C910A500443946 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5AB21A8121C3B2EE009CE57D /* DDBB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DDBB.xcdatamodel; sourceTree = "<group>"; };
 		5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerRSS.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				5AC318A121BFE89B00DFEBF5 /* Modelo.swift */,
 				5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */,
 				5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */,
+				5A9D91A421C910A500443946 /* Extensions.swift */,
 				5AC3187521BFACDB00DFEBF5 /* Main.storyboard */,
 				5AB21A8021C3B2EE009CE57D /* DDBB.xcdatamodeld */,
 				5AC3187821BFACE100DFEBF5 /* Assets.xcassets */,
@@ -274,6 +277,7 @@
 				5AC318A021BFB62A00DFEBF5 /* Tools.swift in Sources */,
 				5AB21A8221C3B2EE009CE57D /* DDBB.xcdatamodeld in Sources */,
 				5AC3187421BFACDB00DFEBF5 /* ViewController.swift in Sources */,
+				5A9D91A521C910A500443946 /* Extensions.swift in Sources */,
 				5AB21A8621C3D05D009CE57D /* TableViewControllerRSS.swift in Sources */,
 				5AB21A8421C3CF8A009CE57D /* TableViewCell.swift in Sources */,
 				5AC3187221BFACDB00DFEBF5 /* AppDelegate.swift in Sources */,

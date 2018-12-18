@@ -75,24 +75,26 @@ class TableViewControllerRSS: UITableViewController {
       
          let datosRSS = postsResult.object(at: indexPath)
          cell.tituloRSS.text = datosRSS.titulo
-         cell.autorRSS.text = datosRSS.autores?.name
          cell.textoRSS.text = datosRSS.contenido
          cell.fechaRSS.text = datosRSS.date
+         cell.autorRSS.text = datosRSS.autores?.name
+      //let autorDevulve = URL(string: "")
       
-//      if let imgURL = datosRSS.imagenURL {
-//         recuperaURL(url: imgURL) {
-//            imagen in
-//            DispatchQueue.main.async {
-//               if let resize = imagen.resizeImage(newWidth: cell.imagen.bounds.size.width) {
-//                  if tableView.visibleCells.contains(cell) {
-//                     cell.imagen.image = resize
-//                  }
-//                  datosRSS.imagen = resize.pngData()
-//                  saveContext()
-//               }
-//            }
-//         }
-//      }
+      if let imgURL = datosRSS.imagenURL {
+         recuperaImagenURL(url: imgURL) {
+            imagen in
+            DispatchQueue.main.async {
+               if let resize = imagen.resizeImage(newWidth: cell.imagenRSS.bounds.size.width) {
+                  if tableView.visibleCells.contains(cell) {
+                     cell.imagenRSS.image = resize
+                     saveContext()
+                  }
+                  datosRSS.imagen = resize.pngData()
+                  saveContext()
+               }
+            }
+         }
+      }
       
       return cell
    }

@@ -12,9 +12,11 @@
         <relationship name="categorias" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" syncable="YES"/>
     </entity>
     <entity name="Posts" representedClassName="Posts" syncable="YES" codeGenerationType="class">
+        <attribute name="autor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="contenido" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imagen" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imagenURL" optional="YES" attributeType="URI" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="autores" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Authors" syncable="YES"/>
@@ -23,6 +25,6 @@
     <elements>
         <element name="Authors" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="Categories" positionX="-36" positionY="9" width="128" height="90"/>
-        <element name="Posts" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Posts" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>
 </model>

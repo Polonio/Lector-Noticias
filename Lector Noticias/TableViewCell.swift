@@ -14,7 +14,7 @@ class TableViewCell: UITableViewCell {
    @IBOutlet weak var textoRSS: UILabel!
    @IBOutlet weak var autorRSS: UILabel!
    @IBOutlet weak var fechaRSS: UILabel!
-   @IBOutlet weak var imagenRSS: UIImageView?
+   @IBOutlet weak var imagenRSS: UIImageView!
    
    
    override func awakeFromNib() {
