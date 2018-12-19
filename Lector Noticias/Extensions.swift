@@ -31,3 +31,17 @@ extension UIImage {
       return newImage
    }
 }
+
+extension String {
+   func deleteHTMLTag(tag:String) -> String {
+      return self.replacingOccurrences(of: "(?i)</?\(tag)\\b[^<]*>", with: "", options: .regularExpression, range: nil)
+   }
+   
+   func deleteHTMLTags(tags:[String]) -> String {
+      var mutableString = self
+      for tag in tags {
+         mutableString = mutableString.deleteHTMLTag(tag: tag)
+      }
+      return mutableString
+   }
+}

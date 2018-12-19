@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A9D91A521C910A500443946 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9D91A421C910A500443946 /* Extensions.swift */; };
+		5A9D91AB21CA6CE900443946 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9D91AA21CA6CE900443946 /* heart.png */; };
 		5AB21A8221C3B2EE009CE57D /* DDBB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8021C3B2EE009CE57D /* DDBB.xcdatamodeld */; };
 		5AB21A8421C3CF8A009CE57D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */; };
 		5AB21A8621C3D05D009CE57D /* TableViewControllerRSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		5A9D91A421C910A500443946 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5A9D91AA21CA6CE900443946 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
 		5AB21A8121C3B2EE009CE57D /* DDBB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DDBB.xcdatamodel; sourceTree = "<group>"; };
 		5AB21A8321C3CF8A009CE57D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5AB21A8521C3D05D009CE57D /* TableViewControllerRSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerRSS.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				5A9D91A421C910A500443946 /* Extensions.swift */,
 				5AC3187521BFACDB00DFEBF5 /* Main.storyboard */,
 				5AB21A8021C3B2EE009CE57D /* DDBB.xcdatamodeld */,
+				5A9D91AA21CA6CE900443946 /* heart.png */,
 				5AC3187821BFACE100DFEBF5 /* Assets.xcassets */,
 				5AC3187A21BFACE100DFEBF5 /* LaunchScreen.storyboard */,
 				5AC3187D21BFACE100DFEBF5 /* Info.plist */,
@@ -247,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9D91AB21CA6CE900443946 /* heart.png in Resources */,
 				5AC3187C21BFACE100DFEBF5 /* LaunchScreen.storyboard in Resources */,
 				5AC3187921BFACE100DFEBF5 /* Assets.xcassets in Resources */,
 				5AC3187721BFACDB00DFEBF5 /* Main.storyboard in Resources */,

@@ -78,22 +78,6 @@ func cargar(datos:Data) {
         
         for datos in posts {
             let cargaTemp = rssCarga(id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.excerpt.rendered, date: datos.date ?? "No se recogen datos", imagenURL: datos.jetpack_featured_media_url, autor: datos.author)
-            //         let cargaTemp = rssCarga (id: Int16(datos.id), titulo: datos.title.rendered, contenido: datos.content.rendered, date: datos.date ?? "No se recogen datos")
-            //         var postsDDBB:[Posts] = []
-            //         for post in dato.titulo.rendered {
-            //            if let existeTitulo =
-            //         }
-            
-            //         var autores:[Authors] = []
-            //         for autor in dato.creators.items {
-            //            if let existeAutor = checkCreador(name: autor.name, role: autor.role ?? "None") {
-            //               autores.append(existeAutor)
-            //            } else {
-            //               let newAutor = Autores(context: context)
-            //               newAutor.autor = autor.name
-            //               newAutor.role = autor.role ?? "Ninguno"
-            //               autores.append(newAutor)
-            //            }
             
             let consulta: NSFetchRequest<Posts> = Posts.fetchRequest()
             consulta.predicate = NSPredicate (format: "id = %d", cargaTemp.id)

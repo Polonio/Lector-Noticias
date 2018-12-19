@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import WebKit
 
 class TableViewControllerRSS: UITableViewController {
 
@@ -44,7 +45,14 @@ class TableViewControllerRSS: UITableViewController {
             self.refresco = false
             self.refresh.endRefreshing()
          }
-      }      
+      }
+      
+      // Pasar datos para mostrar una vez presionemos en la noticia seleccionada de la celda.
+      let web = WKWebView(frame: view.frame)
+      let contenidoWeb = recargarDatos()
+      //web.loadHTMLString(contenidoWeb, baseURL: nil)
+      view.addSubview(web)
+
    }
 
     // MARK: - Table view data source
@@ -65,6 +73,16 @@ class TableViewControllerRSS: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return postsResult.sections?.count ?? 0
     }
+
+   override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+      let action = UIContextualAction(style: .normal, title: title, handler: { (action, view, completionHandler) in
+                                                                     completionHandler (true)
+      })
+      action.image = UIImage(named: "heart")
+      action.backgroundColor = .green
+      let configuracion = UISwipeActionsConfiguration(actions: [action])
+      return configuracion
+   }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postsResult.sections?.first?.numberOfObjects ?? 0
